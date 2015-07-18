@@ -107,7 +107,9 @@ print(totalStepPerDay)
 **2. Histogram of the total number of steps taken each day**  
 
 ```r
-hist(totalStepPerDay$`Total Steps`, main = 'Histogram of the total number of steps\ntaken each day', xlab = 'Total number of steps', ylab = 'Frequency (Days)')
+hist(totalStepPerDay$`Total Steps`, 
+     main = 'Histogram of the total number of steps\ntaken each day', 
+     xlab = 'Total number of steps', ylab = 'Frequency (Days)')
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
@@ -200,7 +202,9 @@ Histogram of the total number of steps taken each day (same code than previously
 ```r
 totalStepPerDay  <- aggregate(dataNaFilled$steps,list(dataNaFilled$date),sum)
 names(totalStepPerDay)  <- c('Day','Total Steps')
-hist(totalStepPerDay$`Total Steps`, main = 'Histogram of the total number of steps\ntaken each day', xlab = 'Total number of steps', ylab = 'Frequency (Days)')
+hist(totalStepPerDay$`Total Steps`, 
+     main = 'Histogram of the total number of steps\ntaken each day', 
+     xlab = 'Total number of steps', ylab = 'Frequency (Days)')
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
@@ -254,10 +258,17 @@ dataNaFilled$daytype <- as.factor(dataNaFilled$daytype)
 
 
 ```r
-averageStepPerInterval  <- aggregate(dataNaFilled$steps,list(dataNaFilled$interval,dataNaFilled$daytype),mean, na.rm=TRUE)
+averageStepPerInterval  <- aggregate(dataNaFilled$steps,
+                                    list(dataNaFilled$interval,
+                                         dataNaFilled$daytype),
+                                    mean, na.rm=TRUE)
 names(averageStepPerInterval)  <- c('5 mn interval','Day type','Average Steps')
 library(lattice)
-xyplot(averageStepPerInterval$'Average Steps' ~ averageStepPerInterval$'5 mn interval' | averageStepPerInterval$'Day type',layout = c(1,2) , type = 'l')
+xyplot(averageStepPerInterval$'Average Steps' 
+       ~ averageStepPerInterval$'5 mn interval' 
+       | averageStepPerInterval$'Day type',
+       layout = c(1,2) , 
+       type = 'l')
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-17-1.png) 

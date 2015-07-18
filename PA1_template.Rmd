@@ -35,7 +35,9 @@ print(totalStepPerDay)
   
 **2. Histogram of the total number of steps taken each day**  
 ```{r, echo=TRUE}
-hist(totalStepPerDay$`Total Steps`, main = 'Histogram of the total number of steps\ntaken each day', xlab = 'Total number of steps', ylab = 'Frequency (Days)')
+hist(totalStepPerDay$`Total Steps`, 
+     main = 'Histogram of the total number of steps\ntaken each day', 
+     xlab = 'Total number of steps', ylab = 'Frequency (Days)')
 ```
   
   
@@ -101,7 +103,9 @@ Histogram of the total number of steps taken each day (same code than previously
 ```{r,echo=TRUE}
 totalStepPerDay  <- aggregate(dataNaFilled$steps,list(dataNaFilled$date),sum)
 names(totalStepPerDay)  <- c('Day','Total Steps')
-hist(totalStepPerDay$`Total Steps`, main = 'Histogram of the total number of steps\ntaken each day', xlab = 'Total number of steps', ylab = 'Frequency (Days)')
+hist(totalStepPerDay$`Total Steps`, 
+     main = 'Histogram of the total number of steps\ntaken each day', 
+     xlab = 'Total number of steps', ylab = 'Frequency (Days)')
 ```
   
 Mean (same code than previously)  
@@ -134,10 +138,17 @@ dataNaFilled$daytype <- as.factor(dataNaFilled$daytype)
 **2. Time series plot of the 5-minute interval and the average number of steps taken, averaged across all weekday days or weekend days**
 
 ```{r,echo=TRUE}
-averageStepPerInterval  <- aggregate(dataNaFilled$steps,list(dataNaFilled$interval,dataNaFilled$daytype),mean, na.rm=TRUE)
+averageStepPerInterval  <- aggregate(dataNaFilled$steps,
+                                    list(dataNaFilled$interval,
+                                         dataNaFilled$daytype),
+                                    mean, na.rm=TRUE)
 names(averageStepPerInterval)  <- c('5 mn interval','Day type','Average Steps')
 library(lattice)
-xyplot(averageStepPerInterval$'Average Steps' ~ averageStepPerInterval$'5 mn interval' | averageStepPerInterval$'Day type',layout = c(1,2) , type = 'l')
+xyplot(averageStepPerInterval$'Average Steps' 
+       ~ averageStepPerInterval$'5 mn interval' 
+       | averageStepPerInterval$'Day type',
+       layout = c(1,2) , 
+       type = 'l')
 
 ```
 
